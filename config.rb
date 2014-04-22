@@ -10,15 +10,15 @@ activate :blog do |blog|
 
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  # blog.sources = "{year}-{month}-{day}-{title}.html"
+  blog.sources = "/articles/:year-:month-:day-:title.html"
   # blog.taglink = "tags/{tag}.html"
-  # blog.layout = "layout"
+  blog.layout = "base"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
   # blog.year_link = "{year}.html"
   # blog.month_link = "{year}/{month}.html"
   # blog.day_link = "{year}/{month}/{day}.html"
-  # blog.default_extension = ".markdown"
+  blog.default_extension = ".md"
 
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
@@ -77,6 +77,19 @@ set :haml, { :ugly => true, :format => :html5 }
 # Use pretty urls
 activate :directory_indexes
 
+# Activate syntax highlighting
+activate :syntax
+set :markdown_engine, :redcarpet
+set :markdown, :smartypants => true, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true
+
+# Auto-prefix vendor prefixes to styles post-processing
+activate :autoprefixer
+
+# Add Bower components path
+ready do
+  sprockets.append_path File.join "#{root}", 'bower_components'
+end
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -109,4 +122,14 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+end
+
+# Deploy site using rsync, Github Pages(default), FTP, or SFTP
+activate :deploy do |deploy|
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote   = "custom-remote" # remote name or git url, default: origin
+  # deploy.branch   = "custom-branch" # default: gh-pages
+  # deploy.strategy = :submodule      # commit strategy: can be :force_push or :submodule, default: :force_push
+  deploy.build_before = true # default: false
 end
