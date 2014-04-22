@@ -10,7 +10,7 @@ activate :blog do |blog|
 
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  blog.sources = "/posts/:year-:month-:day-:title.html"
+  # blog.sources = "{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
   # blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
@@ -18,10 +18,10 @@ activate :blog do |blog|
   # blog.year_link = "{year}.html"
   # blog.month_link = "{year}/{month}.html"
   # blog.day_link = "{year}/{month}/{day}.html"
-  blog.default_extension = ".md"
+  # blog.default_extension = ".markdown"
 
-  # blog.tag_template = "tag.html"
-  # blog.calendar_template = "calendar.html"
+  blog.tag_template = "tag.html"
+  blog.calendar_template = "calendar.html"
 
   # Enable pagination
   # blog.paginate = true
@@ -30,15 +30,6 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", layout: false
-
-# Use pretty URLs
-activate :directory_indexes
-
-# Reload the browser automatically whenever files change
-activate :livereload
-
-# Use HAML markup syntax
-set :haml, {ugly: true, :format => :html5}
 
 ###
 # Compass
@@ -77,6 +68,15 @@ set :haml, {ugly: true, :format => :html5}
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
+# Reload the browser automatically whenever files change
+activate :livereload
+
+# Use Haml markup syntax
+set :haml, { :ugly => true, :format => :html5 }
+
+# Use pretty urls
+activate :directory_indexes
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -92,9 +92,13 @@ set :images_dir, 'images'
 
 # Build-specific configuration
 configure :build do
-  # Minify asset files
+  # For example, change the Compass output style for deployment
   activate :minify_css
+
+  # Minify Javascript on build
   activate :minify_javascript
+
+  # Minify Html on build
   activate :minify_html
 
   # Enable cache buster
@@ -106,11 +110,3 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
-
-# Compress images
-activate :imageoptim
-
-# Add syntax highlighter
-activate :syntax, :line_numbers => true
-set :markdown_engine, :redcarpet
-set :markdown, :smartypants => true, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true

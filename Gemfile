@@ -8,11 +8,9 @@ gem "middleman-blog", "~> 3.5.2"
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 
-# FatOak Customizations
 gem "middleman-livereload", "~> 3.1.0"
 gem "middleman-minify-html"
-gem "middleman-imageoptim", "~> 0.1.4"
+gem "middleman-autoprefixer"
 gem "middleman-syntax"
 gem "redcarpet"
 gem "readingtime"
-gem "nokogiri"
