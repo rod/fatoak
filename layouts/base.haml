@@ -10,10 +10,10 @@
     %title= current_page.data.title
     %meta{:name=>'description', :content=>''}
     %meta{:name=>'viewport', :content=>'width=device-width, initial-scale=1, minimal-ui'}
-    %script{:type => "text/javascript", :src=>"../bower_components/modernizr/modernizr.js"}
     / syntax highliter styles
     = stylesheet_link_tag 'syntax'
   %body
     /[if lt IE 7]><p class=chromeframe>You are using an outdated browser. <a href="//browsehappy.com/">Upgrade your browser today</a> or <a href="//www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     = yield
-    %script{:type => "text/javascript", :src=>"../bower_components/jquery/jquery.min.js"}
+    %script{:type => "text/javascript", :src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+    %script{:type => "text/javascript", :src=""}
