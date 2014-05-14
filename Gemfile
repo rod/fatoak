@@ -8,7 +8,7 @@ gem "middleman-blog", "~> 3.5.2"
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 
-gem "middleman-livereload"
+gem "middleman-livereload", "~> 3.1.0"
 gem "middleman-minify-html"
 gem "middleman-autoprefixer"
 gem "middleman-syntax"
