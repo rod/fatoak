@@ -11,7 +11,7 @@ activate :blog do |blog|
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   blog.sources = "/articles/:year-:month-:day-:title.html"
-  # blog.taglink = "tags/{tag}.html"
+  blog.taglink = "/articles/tags/:tag.html"
   # blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
@@ -72,7 +72,7 @@ page "/feed.xml", layout: false
 activate :livereload
 
 # Use Haml markup syntax
-set :haml, { :ugly => true, :format => :html5 }
+set :haml, {:ugly => true, :format => :html5}
 
 # Use pretty urls
 activate :directory_indexes
