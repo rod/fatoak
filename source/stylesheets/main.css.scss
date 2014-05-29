@@ -2,9 +2,17 @@
 // @import "fontawesome/scss/font-awesome";
 
 // Base
+@import "base/variables";
+@import "base/base";
+@import "base/type";
 
 // Layouts
+@import "layouts/header";
+@import "layouts/footer";
+@import "layouts/posts";
 
 // Modules
+@import "modules/buttons";
+@import "modules/forms";
 
 // Vendor
